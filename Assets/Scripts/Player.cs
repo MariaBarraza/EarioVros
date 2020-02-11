@@ -42,19 +42,21 @@ public class Player : Character2D
     {
         if(GameplaySystem.JumpBtn)
         {
-            if(Grounding)
-            {
+             if (Grounding) 
+             {
                 // anim.SetTrigger("jump");
                 GameplaySystem.Jump(rb2D, jumpForce);
                 doubleJump = true;
-            }else if(!Grounding && doubleJump)
-            {
+             }else {
+                if (doubleJump) 
+                {
                 // anim.SetTrigger("jump2");
-                GameplaySystem.Jump(rb2D, (jumpForce * 0.8f));
-                doubleJump = false;
+                GameplaySystem.Jump(rb2D, (jumpForce));
+                 doubleJump = false;
+                }
             }
-        }
-        anim.SetBool("grounding", Grounding);
+        //anim.SetBool("grounding", Grounding);
+         }
     }
 
     void Update()
@@ -65,7 +67,7 @@ public class Player : Character2D
     void LateUpdate()
     {
         spr.flipX = FlipSprite;
-        anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
+        //anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
     }
 
     /// <summary>
