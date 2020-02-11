@@ -15,12 +15,16 @@ public class GameManager : MonoBehaviour
 
     public Vector2 PlayerPos{ get => playerPos; set => playerPos = value;}
 
+    public Vector2 lastCheckPointPos;
+
     GameStateData gameData;
 
     public GameStateData GameData{ get => gameData; set => gameData = value; }
+    
 
     void Awake()
     {
+        lastCheckPointPos = new Vector2(lastCheckPointPos.x,lastCheckPointPos.y);
         if (!instance)
         {
             instance = this;
