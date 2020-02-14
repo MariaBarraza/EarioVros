@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        lastCheckPointPos = new Vector2(lastCheckPointPos.x,lastCheckPointPos.y);
+        lastCheckPointPos = new Vector2(PlayerPos.x,PlayerPos.y);
         if (!instance)
         {
             instance = this;

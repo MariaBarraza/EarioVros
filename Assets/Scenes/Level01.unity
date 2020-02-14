@@ -130,8 +130,10 @@ GameObject:
   m_Component:
   - component: {fileID: 199851259}
   - component: {fileID: 199851258}
+  - component: {fileID: 199851260}
+  - component: {fileID: 199851261}
   m_Layer: 0
-  m_Name: Diamante (1)
+  m_Name: Flamita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,12 +196,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199851257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.48, y: 0.53, z: 0}
+  m_LocalPosition: {x: 4.59, y: -0.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &199851260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199851257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635cabbc847151749848a129aec28203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  speed: 0
+  dir: {x: 0, y: 0}
+--- !u!65 &199851261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199851257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.95, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &310655722
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +326,7 @@ GameObject:
   - component: {fileID: 344090794}
   - component: {fileID: 344090793}
   m_Layer: 0
-  m_Name: Pico (2)
+  m_Name: 
   m_TagString: CheckPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -692,7 +722,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448835744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.96, y: 0.1, z: 0}
+  m_LocalPosition: {x: -1.96, y: 0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -758,6 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 7
+  lifes: 3
   moveSpeed: 5
   rayColor: {r: 1, g: 0, b: 1, a: 1}
   rayDistance: 0.73

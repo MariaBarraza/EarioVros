@@ -10,13 +10,19 @@ public class Player : Character2D
     // Spawn point of the player
     private Vector2 spawnPoint;
 
+
     // Double Jump
-    bool doubleJump = false;
+    bool doubleJump = true;
+
+        
+    [SerializeField]
+    int lifes;
 
     // Sound Effects
     public AudioClip moveSound1;
     public AudioClip moveSound2;
     public AudioClip gameOverSound;
+
 
     void Start()
     {
@@ -52,7 +58,7 @@ public class Player : Character2D
                 {
                 // anim.SetTrigger("jump2");
                 GameplaySystem.Jump(rb2D, (jumpForce));
-                 doubleJump = false;
+                doubleJump = false;
                 }
             }
         //anim.SetBool("grounding", Grounding);
@@ -86,5 +92,9 @@ public class Player : Character2D
         // I still need to make the camera fadeOut
         SoundManager.instance.PlaySingle(gameOverSound);
         SoundManager.instance.musicSource.Stop();
+    }
+   public int Hit(int lifes)
+    {
+        return lifes;
     }
 }
