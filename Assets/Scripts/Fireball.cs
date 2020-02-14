@@ -19,10 +19,15 @@ public class Fireball : MonoBehaviour
         Movement();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("hit");
-      
+         Player player = other.GetComponent<Player>();
+
+            if (player!= null)
+            {
+                player.Hit();
+            }
     }
 
     private void Movement()

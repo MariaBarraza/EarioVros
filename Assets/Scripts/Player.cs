@@ -4,9 +4,11 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Platform2DUtils.GameplaySystem;
+using UnityEngine.SceneManagement;
 
 public class Player : Character2D
 {   
+    private GameManager gameManager;
     // Spawn point of the player
     private Vector2 spawnPoint;
 
@@ -16,17 +18,17 @@ public class Player : Character2D
 
         
     [SerializeField]
-    int lifes;
+    public int lifes;
 
     // Sound Effects
     public AudioClip moveSound1;
     public AudioClip moveSound2;
     public AudioClip gameOverSound;
-
+    
 
     void Start()
     {
-        string path = Application.persistentDataPath + "/player.fun";
+      /*  string path = Application.persistentDataPath + "/player.fun";
         if (File.Exists(path))
         {
             GameManager.instance.GameData = SaveSystem.LoadGameState();
@@ -41,7 +43,9 @@ public class Player : Character2D
             GameManager.instance.Player.transform.position = GameManager.instance.PlayerPos;
         } else {
             Debug.Log("Save file not found in " + path);
-        }
+        }*/
+        
+        gameManager = FindObjectOfType<GameManager>();
     }
     
     void FixedUpdate()
@@ -89,12 +93,19 @@ public class Player : Character2D
     /// </summary>
     void Death()
     {
+        Destroy(this.gameObject);
         // I still need to make the camera fadeOut
-        SoundManager.instance.PlaySingle(gameOverSound);
-        SoundManager.instance.musicSource.Stop();
+         //SoundManager.instance.PlaySingle(gameOverSound);
+        //SoundManager.instance.musicSource.Stop();
     }
-   public int Hit(int lifes)
+   public void Hit()
     {
-        return lifes;
+        lifes--;
+       this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
+        Debug.Log(lifes);
+        if(lifes<1)
+        {
+            Death();    
+        }
     }
 }

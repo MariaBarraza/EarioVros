@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+
     GameObject player;
 
+    
     public GameObject Player {get => player; set => player = value; }
 
     Vector2 playerPos;
@@ -20,7 +22,6 @@ public class GameManager : MonoBehaviour
     GameStateData gameData;
 
     public GameStateData GameData{ get => gameData; set => gameData = value; }
-    
 
     void Awake()
     {
