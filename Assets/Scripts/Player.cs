@@ -80,19 +80,16 @@ public class Player : Character2D
         //anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
     }
 
-    /// <summary>
-    /// Returns the player to its starting position.
-    /// </summary>
-    void Respawn()
-    {
-        this.transform.position = spawnPoint;
-    }
+
+
 
     /// <summary>
     /// Fades the camera to the death screen and stops the music.
     /// </summary>
     void Death()
     {
+        gameManager.lastCheckPointPos = gameManager.initialPosition;
+        gameManager.dead = true;
         Destroy(this.gameObject);
         // I still need to make the camera fadeOut
          //SoundManager.instance.PlaySingle(gameOverSound);

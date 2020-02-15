@@ -18,13 +18,17 @@ public class GameManager : MonoBehaviour
     public Vector2 PlayerPos{ get => playerPos; set => playerPos = value;}
 
     public Vector2 lastCheckPointPos;
+    public Vector2 initialPosition;
 
     GameStateData gameData;
 
     public GameStateData GameData{ get => gameData; set => gameData = value; }
 
+    public bool dead=false;
+
     void Awake()
     {
+        initialPosition = new Vector2(PlayerPos.x,PlayerPos.y);
         lastCheckPointPos = new Vector2(PlayerPos.x,PlayerPos.y);
         if (!instance)
         {
@@ -34,6 +38,21 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(this);
+        }
+    }
+        /// <summary>
+    /// Returns the player to its starting position.
+    /// </summary>
+    void Respawn()
+    {
+        if(dead)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                Debug.Log("dead");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                dead=false;
+            }
         }
     }
 
@@ -46,5 +65,9 @@ public class GameManager : MonoBehaviour
         position.z = data.position[2];
         player.transform.position = position;
         */
+    }
+    public void Update()
+    {
+        Respawn();
     }
 }

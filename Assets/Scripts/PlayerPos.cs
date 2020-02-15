@@ -11,14 +11,8 @@ public class PlayerPos : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         transform.position = gameManager.lastCheckPointPos;
+      
     }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*if(Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }*/
-    }
 }
