@@ -18,6 +18,9 @@ public class Player : Character2D
     public AudioClip moveSound2;
     public AudioClip gameOverSound;
 
+    [SerializeField]
+    int lives = 3;
+
     void Start()
     {
         string path = Application.persistentDataPath + "/player.fun";
@@ -75,7 +78,7 @@ public class Player : Character2D
     /// </summary>
     void Respawn()
     {
-        this.transform.position = spawnPoint;
+        this.transform.position = GameManager.instance.lastCheckPointPos;
     }
 
     /// <summary>
@@ -86,5 +89,30 @@ public class Player : Character2D
         // I still need to make the camera fadeOut
         SoundManager.instance.PlaySingle(gameOverSound);
         SoundManager.instance.musicSource.Stop();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Corazon"))
+        {
+            GameManager.instance.AddHeart();
+            Destroy(other.gameObject);
+        }
+        if(other.CompareTag("Enemy"))
+        {
+            GameManager.instance.UpdateLives(-1);
+            Respawn();
+        }
+    }
+
+    void Damage()
+    {
+        if(lives > 0)
+        {
+            GameManager.instance.UpdateLives(-1);
+        } else
+        {
+            Death();
+        }
     }
 }
