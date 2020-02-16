@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 146eb3d003c02bd4a9d13c10d0ad1226
+guid: 90c71eae842d1fa438185b6f157fbc22
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4491649008391457688
-    second: IdelSprite_0
+      213: -7036335785867497068
+    second: Mesa de trabajo 30_0
   - first:
-      213: 1590885357767325200
-    second: IdelSprite_1
+      213: 7139852574183988850
+    second: Mesa de trabajo 30_1
   - first:
-      213: -3865390820682210680
-    second: IdelSprite_2
+      213: -957810749788050663
+    second: Mesa de trabajo 30_2
   - first:
-      213: -5473573233399692846
-    second: IdelSprite_3
+      213: -5846881134883516901
+    second: Mesa de trabajo 30_3
+  - first:
+      213: -7002381371566336140
+    second: Mesa de trabajo 30_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -43,8 +46,8 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
-    aniso: 1
+    filterMode: -1
+    aniso: 2
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -134,13 +137,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdelSprite_0
+      name: Mesa de trabajo 30_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 10
-        width: 62
-        height: 152
+        x: 0
+        y: 0
+        width: 66
+        height: 153
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab15315d3cfa2c144af8234d4d263ffd
-      internalID: -4491649008391457688
+      spriteID: bd321425297cb3e44bcdbc458163bf7c
+      internalID: -7036335785867497068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdelSprite_1
+      name: Mesa de trabajo 30_1
       rect:
         serializedVersion: 2
-        x: 95
-        y: 10
-        width: 62
-        height: 152
+        x: 133
+        y: 0
+        width: 67
+        height: 153
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ba4acb62c9f157468ffb0ab7efbc03f
-      internalID: 1590885357767325200
+      spriteID: 8189bc841326b0940a10fcc34e6ed87e
+      internalID: 7139852574183988850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdelSprite_2
+      name: Mesa de trabajo 30_2
       rect:
         serializedVersion: 2
-        x: 178
-        y: 10
-        width: 62
-        height: 152
+        x: 278
+        y: 0
+        width: 66
+        height: 153
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,19 +193,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41e2b1fdc4dbdc144b2e9b9e1ef1461b
-      internalID: -3865390820682210680
+      spriteID: 92f8abed94e65474299bbf703072266d
+      internalID: -957810749788050663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdelSprite_3
+      name: Mesa de trabajo 30_3
       rect:
         serializedVersion: 2
-        x: 261
-        y: 10
-        width: 62
+        x: 417
+        y: 0
+        width: 76
         height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -211,8 +214,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bfba136452c8b34892588e5545e4715
-      internalID: -5473573233399692846
+      spriteID: 3eb536cd4ab4bb94c9a4b07222431c66
+      internalID: -5846881134883516901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mesa de trabajo 30_4
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 0
+        width: 77
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1e67163c3db8940a63ecb9e71dfebf
+      internalID: -7002381371566336140
       vertices: []
       indices: 
       edges: []
@@ -220,7 +244,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3e99f7c6de053fa47a3c9ff4eced5960
+    spriteID: 8137cc1d9fff2ec4eb7315b082ef1747
     internalID: 0
     vertices: []
     indices: 
