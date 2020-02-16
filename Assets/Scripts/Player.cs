@@ -46,6 +46,7 @@ public class Player : Character2D
         }*/
         
         gameManager = FindObjectOfType<GameManager>();
+        gameManager.lastCheckPointPos = new Vector2(transform.position.x, transform.position.y);
     }
     
     void FixedUpdate()
@@ -98,7 +99,7 @@ public class Player : Character2D
    public void Hit()
     {
         lifes--;
-       this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
+        this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
         Debug.Log(lifes);
         if(lifes<1)
         {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CheckPoint
   - gm
+  - diamond
   layers:
   - Default
   - TransparentFX

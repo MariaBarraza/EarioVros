@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameStateData GameData{ get => gameData; set => gameData = value; }
 
     public bool dead=false;
+    public int diamondPieces;
 
     void Awake()
     {
@@ -49,7 +50,6 @@ public class GameManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.R))
             {
-                Debug.Log("dead");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 dead=false;
             }
