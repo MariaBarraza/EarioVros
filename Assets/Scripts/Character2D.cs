@@ -8,11 +8,12 @@ public class Character2D : MonoBehaviour
     protected SpriteRenderer spr;
     protected Animator anim;
     protected Rigidbody2D rb2D;
-    [SerializeField, Range(1f, 10f)]
-    protected float jumpForce = 7f; 
+
+    [SerializeField]
+    protected float jumpForce = 30f; 
    
     [SerializeField]
-    protected float moveSpeed = 2f;
+    protected float moveSpeed = 5f;
 
     //Raycast ***********************
     [SerializeField]
