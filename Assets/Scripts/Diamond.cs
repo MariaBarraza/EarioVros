@@ -8,11 +8,14 @@ public class Diamond : MonoBehaviour
     [SerializeField]
     Vector2 position;
     public bool canSeeDiamond = false;
+    
+    private GameManager gameManager;
 
     SpriteRenderer sprite;
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
        sprite = gameObject.GetComponent<SpriteRenderer>();
     }   
     void Update()
@@ -36,8 +39,8 @@ public class Diamond : MonoBehaviour
                         
                     }else
                     {
-                        //codigo para que aparezca el texto de ganaste o que cambie a la escena de victoria
-                        Debug.Log("YouWin");
+                        gameManager.win = true;
+                        gameManager.Win();
                     }
                 }
              }

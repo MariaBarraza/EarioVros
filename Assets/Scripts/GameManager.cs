@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameStateData GameData{ get => gameData; set => gameData = value; }
 
     public bool dead=false;
+
+    public bool win=false;
     public int diamondPieces;
 
     
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
     Image gameOverImage;
     [SerializeField]
     Text txtGameOver;
+     [SerializeField]
+    Image winImage;
 
 
     void Awake()
@@ -64,7 +68,14 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 UpdateLives(3);
                 dead=false;
-                ResetOpacity();
+               
+            }
+        }else if(win)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene("menu");
+                win = false;
             }
         }
     }
@@ -99,16 +110,6 @@ public class GameManager : MonoBehaviour
         txtLives.text = $"x {lives}";
     }
 
-    public void Start()
-    {
-        /*GameStateData data = SaveSystem.LoadGameState();
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-        player.transform.position = position;
-        */
-    }
     public void Update()
     {
         Respawn();
@@ -116,37 +117,31 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        StartCoroutine("FadeIn");
+        StartCoroutine(FadeIn(blkImage));
+        StartCoroutine(FadeIn(gameOverImage));
+        StartCoroutine(FadeIn(txtGameOver));
     }
 
-    IEnumerator FadeIn()
+       public void Win()
+    {
+        StartCoroutine(FadeIn(blkImage));
+        StartCoroutine(FadeIn(winImage));
+    }
+
+  IEnumerator FadeIn(MaskableGraphic element)
     {
         for(double i=0;i<=1;i+=0.1)
         {
-            Color tmp = blkImage.color;
-            tmp.a = (float)i;
-            blkImage.color = tmp;
-            tmp = gameOverImage.color;
-            tmp.a = (float)i;
-            gameOverImage.color = tmp;
-            tmp = txtGameOver.color;
-            tmp.a = (float)i;
-            txtGameOver.color = tmp;
-
+             Color tmp = element.color;
+               tmp.a = (float)i;
+                      element.color = tmp;
             yield return new WaitForSeconds(0.05f);
         }
     }
-
-    void ResetOpacity(){
-        Color tmp = blkImage.color;
+    void ResetOpacity(MaskableGraphic element){
+        Color tmp = element.color;
         tmp.a = 0;
-        blkImage.color = tmp;
-        tmp = gameOverImage.color;
-        tmp.a = 0;
-        gameOverImage.color = tmp;
-        tmp = txtGameOver.color;
-        tmp.a = 0;
-        txtGameOver.color = tmp;
+         element.color = tmp;
     }
 
 }

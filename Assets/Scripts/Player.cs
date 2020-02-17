@@ -85,7 +85,7 @@ public class Player : Character2D
    public void Hit()
     {
         if(gameManager.lives<2)
-        {   
+        {  
             gameManager.UpdateLives(-1);
             Death();
 
