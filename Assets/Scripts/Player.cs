@@ -4,38 +4,33 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Platform2DUtils.GameplaySystem;
+using UnityEngine.SceneManagement;
 
 public class Player : Character2D
 {   
+    private GameManager gameManager;
     // Spawn point of the player
     private Vector2 spawnPoint;
 
+
     // Double Jump
-    bool doubleJump = false;
+    bool doubleJump = true;
+
+  
+    [SerializeField]
+    int lives = 3;
 
     // Sound Effects
     public AudioClip moveSound1;
     public AudioClip moveSound2;
     public AudioClip gameOverSound;
+    
 
     void Start()
     {
-        string path = Application.persistentDataPath + "/player.fun";
-        if (File.Exists(path))
-        {
-            GameManager.instance.GameData = SaveSystem.LoadGameState();
-
-            GameManager.instance.Player = gameObject; 
-
-            GameManager.instance.PlayerPos = new Vector3(
-                GameManager.instance.GameData.position[0],
-                GameManager.instance.GameData.position[1]
-            );
-
-            GameManager.instance.Player.transform.position = GameManager.instance.PlayerPos;
-        } else {
-            Debug.Log("Save file not found in " + path);
-        }
+        
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.lastCheckPointPos = new Vector2(transform.position.x, transform.position.y);
     }
     
     void FixedUpdate()
@@ -52,7 +47,7 @@ public class Player : Character2D
                 {
                 // anim.SetTrigger("jump2");
                 GameplaySystem.Jump(rb2D, (jumpForce));
-                 doubleJump = false;
+                doubleJump = false;
                 }
             }
         //anim.SetBool("grounding", Grounding);
@@ -70,21 +65,46 @@ public class Player : Character2D
         //anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
     }
 
-    /// <summary>
-    /// Returns the player to its starting position.
-    /// </summary>
-    void Respawn()
-    {
-        this.transform.position = spawnPoint;
-    }
+
+
 
     /// <summary>
     /// Fades the camera to the death screen and stops the music.
     /// </summary>
     void Death()
     {
+        gameManager.lastCheckPointPos = gameManager.initialPosition;
+        gameManager.dead = true;
+        Destroy(this.gameObject);
         // I still need to make the camera fadeOut
-        SoundManager.instance.PlaySingle(gameOverSound);
-        SoundManager.instance.musicSource.Stop();
+         //SoundManager.instance.PlaySingle(gameOverSound);
+        //SoundManager.instance.musicSource.Stop();
+    }
+   public void Hit()
+    {
+         gameManager.UpdateLives(-1);
+        this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
+        if(gameManager.lives<1)
+        {
+            Debug.Log("hi");    
+             gameManager.UpdateLives(3);
+            Death();    
+        }
+    }
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Corazon"))
+        {
+             gameManager.AddHeart();
+            Destroy(other.gameObject);
+        }
+        /*if(other.CompareTag("Enemy"))
+        {
+            GameManager.instance.UpdateLives(-1);
+            Respawn();
+        }*/
     }
 }
+
+

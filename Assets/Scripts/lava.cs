@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundEnemy : MonoBehaviour
+public class lava : Enemy2D
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,9 @@ public class GroundEnemy : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+       KillPlayer(other);
     }
 }
