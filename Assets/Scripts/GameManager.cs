@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     Image gameOverImage;
     [SerializeField]
     Text txtGameOver;
+    [SerializeField]
+    Image winImage;
 
     void Awake()
     {
@@ -87,37 +89,32 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        StartCoroutine("FadeIn");
+        StartCoroutine(FadeIn(blkImage));
+        StartCoroutine(FadeIn(gameOverImage));
+        StartCoroutine(FadeIn(txtGameOver));
     }
 
-    IEnumerator FadeIn()
+    public void Win()
+    {
+        StartCoroutine(FadeIn(blkImage));
+        StartCoroutine(FadeIn(winImage));
+    }
+
+    IEnumerator FadeIn(MaskableGraphic element)
     {
         for(double i=0;i<=1;i+=0.1)
         {
-            Color tmp = blkImage.color;
+            Color tmp = element.color;
             tmp.a = (float)i;
-            blkImage.color = tmp;
-            tmp = gameOverImage.color;
-            tmp.a = (float)i;
-            gameOverImage.color = tmp;
-            tmp = txtGameOver.color;
-            tmp.a = (float)i;
-            txtGameOver.color = tmp;
-            
+            element.color = tmp;
             yield return new WaitForSeconds(0.05f);
         }
     }
 
-    void ResetOpacity(){
-        Color tmp = blkImage.color;
+    void ResetOpacity(MaskableGraphic element){
+        Color tmp = element.color;
         tmp.a = 0;
-        blkImage.color = tmp;
-        tmp = gameOverImage.color;
-        tmp.a = 0;
-        gameOverImage.color = tmp;
-        tmp = txtGameOver.color;
-        tmp.a = 0;
-        txtGameOver.color = tmp;
+        element.color = tmp;
     }
 
     public void Start()
