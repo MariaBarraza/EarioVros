@@ -24,7 +24,6 @@ public class DiamondPieces : MonoBehaviour
             }else
             {
                 gameManager.diamondPieces++;
-                Debug.Log(gameManager.diamondPieces); 
                 Destroy(gameObject);
             }
         }

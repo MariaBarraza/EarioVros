@@ -25,6 +25,9 @@ public class Player : Character2D
     public AudioClip moveSound2;
     public AudioClip gameOverSound;
     
+    private bool invincible = false;
+    
+    [SerializeField] float invincibilityTime = 1.0f;
 
     void Start()
     {
@@ -75,20 +78,28 @@ public class Player : Character2D
     {
         gameManager.lastCheckPointPos = gameManager.initialPosition;
         gameManager.dead = true;
+        gameManager.GameOver();
         Destroy(this.gameObject);
+
         // I still need to make the camera fadeOut
          //SoundManager.instance.PlaySingle(gameOverSound);
         //SoundManager.instance.musicSource.Stop();
     }
    public void Hit()
     {
-         gameManager.UpdateLives(-1);
-        this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
-        if(gameManager.lives<1)
+        if(gameManager.lives<2)
         {   
-            gameManager.UpdateLives(3);
+            gameManager.UpdateLives(-1);
             Death();    
         }
+        if(!invincible)
+        {
+            gameManager.UpdateLives(-1);
+            this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
+            invincible = true;
+            StartCoroutine(resetInvulnerability());
+        }
+ 
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -98,12 +109,12 @@ public class Player : Character2D
              gameManager.AddHeart();
             Destroy(other.gameObject);
         }
-        /*if(other.CompareTag("Enemy"))
-        {
-            GameManager.instance.UpdateLives(-1);
-            Respawn();
-        }*/
     }
+       IEnumerator resetInvulnerability()
+        {
+            yield return new WaitForSeconds(invincibilityTime);
+            invincible = false;
+        }
 }
 
 

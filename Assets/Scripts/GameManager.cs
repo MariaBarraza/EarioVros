@@ -41,6 +41,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Image[] imageHearts = new Image[3];
 
+     [SerializeField]
+    Image blkImage;
+    [SerializeField]
+    Image gameOverImage;
+    [SerializeField]
+    Text txtGameOver;
+
 
     void Awake()
     {
@@ -55,7 +62,9 @@ public class GameManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                UpdateLives(3);
                 dead=false;
+                ResetOpacity();
             }
         }
     }
@@ -104,4 +113,40 @@ public class GameManager : MonoBehaviour
     {
         Respawn();
     }
+
+    public void GameOver()
+    {
+        StartCoroutine("FadeIn");
+    }
+
+    IEnumerator FadeIn()
+    {
+        for(double i=0;i<=1;i+=0.1)
+        {
+            Color tmp = blkImage.color;
+            tmp.a = (float)i;
+            blkImage.color = tmp;
+            tmp = gameOverImage.color;
+            tmp.a = (float)i;
+            gameOverImage.color = tmp;
+            tmp = txtGameOver.color;
+            tmp.a = (float)i;
+            txtGameOver.color = tmp;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    void ResetOpacity(){
+        Color tmp = blkImage.color;
+        tmp.a = 0;
+        blkImage.color = tmp;
+        tmp = gameOverImage.color;
+        tmp.a = 0;
+        gameOverImage.color = tmp;
+        tmp = txtGameOver.color;
+        tmp.a = 0;
+        txtGameOver.color = tmp;
+    }
+
 }
