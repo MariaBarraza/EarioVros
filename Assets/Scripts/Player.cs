@@ -23,6 +23,7 @@ public class Player : Character2D
     // Sound Effects
     public AudioClip moveSound1;
     public AudioClip moveSound2;
+    public AudioClip jumpSound;
     public AudioClip gameOverSound;
     
     private bool invincible = false;
@@ -80,17 +81,16 @@ public class Player : Character2D
         gameManager.dead = true;
         gameManager.GameOver();
         Destroy(this.gameObject);
-
-        // I still need to make the camera fadeOut
-         //SoundManager.instance.PlaySingle(gameOverSound);
-        //SoundManager.instance.musicSource.Stop();
     }
    public void Hit()
     {
         if(gameManager.lives<2)
         {   
             gameManager.UpdateLives(-1);
-            Death();    
+            Death();
+
+            SoundManager.instance.PlaySingle(gameOverSound);
+            SoundManager.instance.musicSource.Stop();
         }
         if(!invincible)
         {
@@ -98,8 +98,10 @@ public class Player : Character2D
             this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
             invincible = true;
             StartCoroutine(resetInvulnerability());
+
+            SoundManager.instance.PlaySingle(gameOverSound);
+            SoundManager.instance.musicSource.Stop();
         }
- 
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -116,5 +118,3 @@ public class Player : Character2D
             invincible = false;
         }
 }
-
-
