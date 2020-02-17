@@ -26,6 +26,9 @@ public class Player : Character2D
     public AudioClip gameOverSound;
     
 
+    [SerializeField]
+    int lives = 3;
+
     void Start()
     {
       /*  string path = Application.persistentDataPath + "/player.fun";
@@ -104,6 +107,30 @@ public class Player : Character2D
         if(lifes<1)
         {
             Death();    
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Corazon"))
+        {
+            GameManager.instance.AddHeart();
+            Destroy(other.gameObject);
+        }
+        if(other.CompareTag("Enemy"))
+        {
+            GameManager.instance.UpdateLives(-1);
+        }
+    }
+
+    void Damage()
+    {
+        if(lives > 0)
+        {
+            GameManager.instance.UpdateLives(-1);
+        } else
+        {
+            Death();
         }
     }
 }
