@@ -18,9 +18,6 @@ public class Player : Character2D
     public AudioClip moveSound2;
     public AudioClip gameOverSound;
 
-    [SerializeField]
-    int lives = 3;
-
     void Start()
     {
         string path = Application.persistentDataPath + "/player.fun";
@@ -100,19 +97,20 @@ public class Player : Character2D
         }
         if(other.CompareTag("Enemy"))
         {
-            GameManager.instance.UpdateLives(-1);
+            Damage();
             Respawn();
         }
     }
 
     void Damage()
     {
-        if(lives > 0)
+        if(GameManager.instance.lives > 0)
         {
             GameManager.instance.UpdateLives(-1);
         } else
         {
-            Death();
+            Debug.Log("Muerte");
+            GameManager.instance.GameOver();
         }
     }
 }
