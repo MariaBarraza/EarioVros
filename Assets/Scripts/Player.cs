@@ -85,9 +85,8 @@ public class Player : Character2D
          gameManager.UpdateLives(-1);
         this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
         if(gameManager.lives<1)
-        {
-            Debug.Log("hi");    
-             gameManager.UpdateLives(3);
+        {   
+            gameManager.UpdateLives(3);
             Death();    
         }
     }
