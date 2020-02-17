@@ -16,9 +16,9 @@ public class Player : Character2D
     // Double Jump
     bool doubleJump = true;
 
-        
+  
     [SerializeField]
-    public int lifes;
+    int lives = 3;
 
     // Sound Effects
     public AudioClip moveSound1;
@@ -28,22 +28,6 @@ public class Player : Character2D
 
     void Start()
     {
-      /*  string path = Application.persistentDataPath + "/player.fun";
-        if (File.Exists(path))
-        {
-            GameManager.instance.GameData = SaveSystem.LoadGameState();
-
-            GameManager.instance.Player = gameObject; 
-
-            GameManager.instance.PlayerPos = new Vector3(
-                GameManager.instance.GameData.position[0],
-                GameManager.instance.GameData.position[1]
-            );
-
-            GameManager.instance.Player.transform.position = GameManager.instance.PlayerPos;
-        } else {
-            Debug.Log("Save file not found in " + path);
-        }*/
         
         gameManager = FindObjectOfType<GameManager>();
         gameManager.lastCheckPointPos = new Vector2(transform.position.x, transform.position.y);
@@ -98,12 +82,29 @@ public class Player : Character2D
     }
    public void Hit()
     {
-        lifes--;
+         gameManager.UpdateLives(-1);
         this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
-        Debug.Log(lifes);
-        if(lifes<1)
+        if(gameManager.lives<1)
         {
+            Debug.Log("hi");    
+             gameManager.UpdateLives(3);
             Death();    
         }
     }
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Corazon"))
+        {
+             gameManager.AddHeart();
+            Destroy(other.gameObject);
+        }
+        /*if(other.CompareTag("Enemy"))
+        {
+            GameManager.instance.UpdateLives(-1);
+            Respawn();
+        }*/
+    }
 }
+
+
