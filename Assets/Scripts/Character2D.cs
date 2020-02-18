@@ -9,17 +9,11 @@ public class Character2D : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rb2D;
 
-    [SerializeField]
-    protected float jumpForce = 30f; 
-   
-    [SerializeField]
-    protected float moveSpeed = 5f;
-
     //Raycast ***********************
     [SerializeField]
     Color rayColor = Color.magenta;
-    [SerializeField, Range(0.1f, 5f)]
-    float rayDistance = 5f;
+    [SerializeField]
+    float rayDistance = 0.85f;
     [SerializeField]
     LayerMask groundLayer;
     //*****************************
