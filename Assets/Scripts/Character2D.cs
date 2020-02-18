@@ -9,11 +9,12 @@ public class Character2D : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rb2D;
 
+
     //Raycast ***********************
     [SerializeField]
     Color rayColor = Color.magenta;
-    [SerializeField]
-    float rayDistance = 0.85f;
+    [SerializeField, Range(0.1f, 5f)]
+    float rayDistance = 5f;
     [SerializeField]
     LayerMask groundLayer;
     //*****************************

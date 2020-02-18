@@ -12,8 +12,7 @@ public class Player : Character2D
     // Spawn point of the player
     private Vector2 spawnPoint;
 
-
-    // Double Jump
+// Double Jump
 	float dirX;
 
 	[SerializeField]
@@ -23,8 +22,6 @@ public class Player : Character2D
 
 	bool doubleJumpAllowed = false;
 	bool onTheGround = false;
-
-
   
     [SerializeField]
     int lives = 3;
@@ -34,18 +31,21 @@ public class Player : Character2D
     public AudioClip moveSound2;
     public AudioClip gameOverSound;
     
+    private bool invincible = false;
+    
+    [SerializeField] float invincibilityTime = 1.0f;
 
     void Start()
     {
         
         gameManager = FindObjectOfType<GameManager>();
         gameManager.lastCheckPointPos = new Vector2(transform.position.x, transform.position.y);
-    	rb = GetComponent<Rigidbody2D> ();
-
+        rb = GetComponent<Rigidbody2D> ();
     }
     
     void FixedUpdate()
     {
+        
         rb.velocity = new Vector2 (dirX, rb.velocity.y);
     }
 
@@ -69,7 +69,6 @@ public class Player : Character2D
 		}
 		
 		dirX = Input.GetAxis ("Horizontal") * moveSpeed;
-
     }
 
     void LateUpdate()
@@ -88,20 +87,28 @@ public class Player : Character2D
     {
         gameManager.lastCheckPointPos = gameManager.initialPosition;
         gameManager.dead = true;
+        gameManager.GameOver();
         Destroy(this.gameObject);
+
         // I still need to make the camera fadeOut
          //SoundManager.instance.PlaySingle(gameOverSound);
         //SoundManager.instance.musicSource.Stop();
     }
    public void Hit()
     {
-         gameManager.UpdateLives(-1);
-        this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
-        if(gameManager.lives<1)
-        {   
-            gameManager.UpdateLives(3);
+        if(gameManager.lives<2)
+        {  
+            gameManager.UpdateLives(-1);
             Death();    
         }
+        if(!invincible)
+        {
+            gameManager.UpdateLives(-1);
+            this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
+            invincible = true;
+            StartCoroutine(resetInvulnerability());
+        }
+ 
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -111,19 +118,18 @@ public class Player : Character2D
              gameManager.AddHeart();
             Destroy(other.gameObject);
         }
-        /*if(other.CompareTag("Enemy"))
-        {
-            GameManager.instance.UpdateLives(-1);
-            Respawn();
-        }*/
     }
+       IEnumerator resetInvulnerability()
+        {
+            yield return new WaitForSeconds(invincibilityTime);
+            invincible = false;
+        }
 
-    	void Jump()
+    void Jump()
 	{
 		rb.velocity = new Vector2 (rb.velocity.x, 0f);;
 		rb.AddForce (Vector2.up * jumpForce);
 	}
-
 }
 
 

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameStateData GameData{ get => gameData; set => gameData = value; }
 
     public bool dead=false;
+
+    public bool win=false;
     public int diamondPieces;
 
     
@@ -41,11 +43,21 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Image[] imageHearts = new Image[3];
 
+     [SerializeField]
+    Image blkImage;
+    [SerializeField]
+    Image gameOverImage;
+    [SerializeField]
+    Text txtGameOver;
+     [SerializeField]
+    Image winImage;
+
 
     void Awake()
     {
         initialPosition = new Vector2(PlayerPos.x,PlayerPos.y);
         lastCheckPointPos = new Vector2(PlayerPos.x,PlayerPos.y);
+        UpdateLives(0);        
     }
 
     void Respawn()
@@ -55,7 +67,16 @@ public class GameManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                UpdateLives(3);
                 dead=false;
+               
+            }
+        }else if(win)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene("menu");
+                win = false;
             }
         }
     }
@@ -90,18 +111,38 @@ public class GameManager : MonoBehaviour
         txtLives.text = $"x {lives}";
     }
 
-    public void Start()
-    {
-        /*GameStateData data = SaveSystem.LoadGameState();
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-        player.transform.position = position;
-        */
-    }
     public void Update()
     {
         Respawn();
     }
+
+    public void GameOver()
+    {
+        StartCoroutine(FadeIn(blkImage));
+        StartCoroutine(FadeIn(gameOverImage));
+        StartCoroutine(FadeIn(txtGameOver));
+    }
+
+       public void Win()
+    {
+        StartCoroutine(FadeIn(blkImage));
+        StartCoroutine(FadeIn(winImage));
+    }
+
+  IEnumerator FadeIn(MaskableGraphic element)
+    {
+        for(double i=0;i<=1;i+=0.1)
+        {
+             Color tmp = element.color;
+               tmp.a = (float)i;
+                      element.color = tmp;
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+    void ResetOpacity(MaskableGraphic element){
+        Color tmp = element.color;
+        tmp.a = 0;
+         element.color = tmp;
+    }
+
 }

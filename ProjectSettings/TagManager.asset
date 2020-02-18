@@ -48,3 +48,21 @@ TagManager:
   - name: background
     uniqueID: 875529373
     locked: 0
+  - name: tree
+    uniqueID: 3530528919
+    locked: 0
+  - name: bush
+    uniqueID: 1586547421
+    locked: 0
+  - name: rock
+    uniqueID: 3120723953
+    locked: 0
+  - name: enemy
+    uniqueID: 3418040839
+    locked: 0
+  - name: texts
+    uniqueID: 172492453
+    locked: 0
+  - name: player
+    uniqueID: 1243340431
+    locked: 0

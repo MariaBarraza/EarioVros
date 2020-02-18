@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    //public bool checkPointActive = false;
     private GameManager gameManager;
-    // Start is called before the first frame update
+
+    Animator anim;
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -23,7 +23,7 @@ public class CheckPoint : MonoBehaviour
         if(other.tag=="Player")
         {
             gameManager.lastCheckPointPos = this.transform.position;
-           // checkPointActive = true;
+            anim.SetTrigger("isTouched");
         }
     }
 }
