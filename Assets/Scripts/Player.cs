@@ -32,8 +32,8 @@ public class Player : Character2D
     int lives = 3;
 
     // Sound Effects
-    public AudioClip moveSound1;
-    public AudioClip moveSound2;
+    public AudioClip jumpSound;
+    public AudioClip deathSound;
     public AudioClip gameOverSound;
 
     private bool invincible = false;
@@ -107,7 +107,7 @@ public class Player : Character2D
     
     public void Hit()
     {
-        anim.SetBool("death", true);
+        // anim.SetBool("death", true);
         if (gameManager.lives < 2)
         {
             gameManager.UpdateLives(-1);
@@ -117,7 +117,7 @@ public class Player : Character2D
         {
             gameManager.UpdateLives(-1);
             
-            StartCoroutine("respawn");
+            respawn();
         }
     }
 
@@ -136,16 +136,16 @@ public class Player : Character2D
         invincible = false;
     }
 
-    IEnumerator respawn()
+    void respawn()
     {
         invincible = true;
 
-        yield return new WaitForSeconds(0.2f);
-        
+        // yield return new WaitForSeconds(0.2f);
+
         this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
 
         // Set animation back to Idle
-        anim.SetBool("death", false);
+        // anim.SetBool("death", false);
         StartCoroutine(resetInvulnerability());
     }
 
