@@ -78,9 +78,6 @@ public class Player : Character2D
         //anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
     }
 
-
-
-
     /// <summary>
     /// Fades the camera to the death screen and stops the music.
     /// </summary>
@@ -89,18 +86,18 @@ public class Player : Character2D
         gameManager.lastCheckPointPos = gameManager.initialPosition;
         gameManager.dead = true;
         Destroy(this.gameObject);
-        // I still need to make the camera fadeOut
-         //SoundManager.instance.PlaySingle(gameOverSound);
-        //SoundManager.instance.musicSource.Stop();
     }
+
    public void Hit()
     {
          gameManager.UpdateLives(-1);
         this.transform.position = new Vector2(gameManager.lastCheckPointPos.x, gameManager.lastCheckPointPos.y);
-        if(gameManager.lives<1)
+        if(gameManager.lives < 1)
         {   
             gameManager.UpdateLives(3);
-            Death();    
+            Death();
+            SoundManager.instance.PlaySingle(gameOverSound);
+        SoundManager.instance.musicSource.Stop();
         }
     }
     

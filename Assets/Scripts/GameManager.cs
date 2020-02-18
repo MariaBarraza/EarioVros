@@ -10,24 +10,24 @@ public class GameManager : MonoBehaviour
 
     GameObject player;
 
-    
-    public GameObject Player {get => player; set => player = value; }
+
+    public GameObject Player { get => player; set => player = value; }
 
     Vector2 playerPos;
 
-    public Vector2 PlayerPos{ get => playerPos; set => playerPos = value;}
+    public Vector2 PlayerPos { get => playerPos; set => playerPos = value; }
 
     public Vector2 lastCheckPointPos;
     public Vector2 initialPosition;
 
     GameStateData gameData;
 
-    public GameStateData GameData{ get => gameData; set => gameData = value; }
+    public GameStateData GameData { get => gameData; set => gameData = value; }
 
-    public bool dead=false;
+    public bool dead = false;
     public int diamondPieces;
 
-    
+
     int hearts = 0;
     [SerializeField]
     public int lives = 3;
@@ -37,33 +37,33 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Sprite emptyHeart;
     [SerializeField]
-    Sprite heart; 
+    Sprite heart;
     [SerializeField]
     Image[] imageHearts = new Image[3];
 
 
     void Awake()
     {
-        initialPosition = new Vector2(PlayerPos.x,PlayerPos.y);
-        lastCheckPointPos = new Vector2(PlayerPos.x,PlayerPos.y);
+        initialPosition = new Vector2(PlayerPos.x, PlayerPos.y);
+        lastCheckPointPos = new Vector2(PlayerPos.x, PlayerPos.y);
     }
 
     void Respawn()
     {
-        if(dead)
+        if (dead)
         {
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                dead=false;
+                dead = false;
             }
         }
     }
 
-        public void AddHeart()
+    public void AddHeart()
     {
         hearts += 1;
-        switch(hearts)
+        switch (hearts)
         {
             case 1:
                 imageHearts[0].sprite = heart;
