@@ -8,15 +8,15 @@ public class Trap : Enemy2D
     // Start is called before the first frame update
     void Start()
     {
-        
        sprite = gameObject.GetComponent<SpriteRenderer>();
+       sprite.enabled = false;
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       KillPlayer(other);
-       sprite.enabled= true;
+       sprite.enabled = true;
+       KillPlayer(other);   
     }
 
 }
