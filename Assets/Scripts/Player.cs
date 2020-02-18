@@ -12,10 +12,16 @@ public class Player : Character2D
     // Spawn point of the player
     private Vector2 spawnPoint;
 
+// Double Jump
+	float dirX;
 
-    // Double Jump
-    bool doubleJump = true;
+	[SerializeField]
+	float jumpForce = 500f, moveSpeed = 5f;
 
+	Rigidbody2D rb;
+
+	bool doubleJumpAllowed = false;
+	bool onTheGround = false;
   
     [SerializeField]
     int lives = 3;
@@ -34,32 +40,35 @@ public class Player : Character2D
         
         gameManager = FindObjectOfType<GameManager>();
         gameManager.lastCheckPointPos = new Vector2(transform.position.x, transform.position.y);
+        rb = GetComponent<Rigidbody2D> ();
     }
     
     void FixedUpdate()
     {
-        if(GameplaySystem.JumpBtn)
-        {
-             if (Grounding) 
-             {
-                // anim.SetTrigger("jump");
-                GameplaySystem.Jump(rb2D, jumpForce);
-                doubleJump = true;
-             }else {
-                if (doubleJump) 
-                {
-                // anim.SetTrigger("jump2");
-                GameplaySystem.Jump(rb2D, (jumpForce));
-                doubleJump = false;
-                }
-            }
-        //anim.SetBool("grounding", Grounding);
-         }
+        
+        rb.velocity = new Vector2 (dirX, rb.velocity.y);
     }
 
     void Update()
     {
         GameplaySystem.TMovementDelta(transform, moveSpeed);
+        		
+		if (rb.velocity.y == 0)
+			onTheGround = true;
+		else
+			onTheGround = false;
+		
+		if (onTheGround)
+			doubleJumpAllowed = true;
+
+		if (onTheGround && Input.GetButtonDown ("Jump")) {
+			Jump ();
+		} else if (doubleJumpAllowed && Input.GetButtonDown ("Jump")) {
+			Jump ();
+			doubleJumpAllowed = false;
+		}
+		
+		dirX = Input.GetAxis ("Horizontal") * moveSpeed;
     }
 
     void LateUpdate()
@@ -115,6 +124,12 @@ public class Player : Character2D
             yield return new WaitForSeconds(invincibilityTime);
             invincible = false;
         }
+
+    void Jump()
+	{
+		rb.velocity = new Vector2 (rb.velocity.x, 0f);;
+		rb.AddForce (Vector2.up * jumpForce);
+	}
 }
 
 
