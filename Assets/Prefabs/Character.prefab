@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4094012427372461031}
   - component: {fileID: 4094012427372461016}
   - component: {fileID: 4094012427372461017}
-  - component: {fileID: 2721560238844746208}
   - component: {fileID: 8943657020628609927}
   - component: {fileID: 8039787087203869317}
+  - component: {fileID: 2911977657209811854}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1243340431
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -4491649008391457688, guid: 3c8b9dcf74fe5ef4883de0a81e91bfb2,
     type: 3}
@@ -104,30 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2721560238844746208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4094012427372461018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b7907dac8b6324ebc52918bb66bbc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayColor: {r: 1, g: 0, b: 1, a: 1}
-  rayDistance: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  jumpForce: 800
-  moveSpeed: 5
-  lives: 3
-  moveSound1: {fileID: 0}
-  moveSound2: {fileID: 0}
-  gameOverSound: {fileID: 0}
-  invincibilityTime: 1
 --- !u!70 &8943657020628609927
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,3 +141,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2911977657209811854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094012427372461018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b7907dac8b6324ebc52918bb66bbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayColor: {r: 1, g: 0, b: 1, a: 1}
+  rayDistance: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  jumpForce: 800
+  moveSpeed: 5
+  lives: 3
+  moveSound1: {fileID: 0}
+  moveSound2: {fileID: 0}
+  gameOverSound: {fileID: 0}
+  invincibilityTime: 1

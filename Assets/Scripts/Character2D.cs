@@ -9,7 +9,6 @@ public class Character2D : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rb2D;
 
-
     //Raycast ***********************
     [SerializeField]
     Color rayColor = Color.magenta;
