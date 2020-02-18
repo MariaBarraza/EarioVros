@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1243340431
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -4491649008391457688, guid: 3c8b9dcf74fe5ef4883de0a81e91bfb2,
     type: 3}
@@ -159,7 +159,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   jumpForce: 800
-  moveSpeed: 5
+  moveSpeed: 8
   lives: 3
   moveSound1: {fileID: 0}
   moveSound2: {fileID: 0}

@@ -43,7 +43,6 @@
         
         public static void Jump(Rigidbody2D rb2D, float jumpForce)
         {
-            
             //rb2D.AddRelativeForce (new Vector2 (0, jumpForce));
             //rb2D.AddForce(new Vector2(0, jumpForce));
              rb2D.velocity = new Vector2(rb2D.velocity.x, 0);
