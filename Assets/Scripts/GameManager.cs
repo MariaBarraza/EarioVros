@@ -6,30 +6,26 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
-
     GameObject player;
 
-    
-    public GameObject Player {get => player; set => player = value; }
+    public GameObject Player { get => player; set => player = value; }
 
     Vector2 playerPos;
 
-    public Vector2 PlayerPos{ get => playerPos; set => playerPos = value;}
+    public Vector2 PlayerPos { get => playerPos; set => playerPos = value; }
 
     public Vector2 lastCheckPointPos;
     public Vector2 initialPosition;
 
     GameStateData gameData;
 
-    public GameStateData GameData{ get => gameData; set => gameData = value; }
+    public GameStateData GameData { get => gameData; set => gameData = value; }
 
-    public bool dead=false;
+    public bool dead = false;
 
-    public bool win=false;
+    public bool win = false;
     public int diamondPieces;
 
-    
     int hearts = 0;
     [SerializeField]
     public int lives = 3;
@@ -39,41 +35,42 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Sprite emptyHeart;
     [SerializeField]
-    Sprite heart; 
+    Sprite heart;
     [SerializeField]
     Image[] imageHearts = new Image[3];
 
-     [SerializeField]
+    [SerializeField]
     Image blkImage;
     [SerializeField]
     Image gameOverImage;
     [SerializeField]
     Text txtGameOver;
-     [SerializeField]
+    [SerializeField]
     Image winImage;
 
 
     void Awake()
     {
-        initialPosition = new Vector2(PlayerPos.x,PlayerPos.y);
-        lastCheckPointPos = new Vector2(PlayerPos.x,PlayerPos.y);
-        UpdateLives(0);        
+        initialPosition = new Vector2(PlayerPos.x, PlayerPos.y);
+        lastCheckPointPos = new Vector2(PlayerPos.x, PlayerPos.y);
+        UpdateLives(0);
     }
 
     void Respawn()
     {
-        if(dead)
+        if (dead)
         {
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 UpdateLives(3);
-                dead=false;
-               
+                dead = false;
+
             }
-        }else if(win)
+        }
+        else if (win)
         {
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene("menu");
                 win = false;
@@ -81,10 +78,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-        public void AddHeart()
+    public void AddHeart()
     {
         hearts += 1;
-        switch(hearts)
+        switch (hearts)
         {
             case 1:
                 imageHearts[0].sprite = heart;
@@ -123,26 +120,36 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeIn(txtGameOver));
     }
 
-       public void Win()
+    public void Win()
     {
         StartCoroutine(FadeIn(blkImage));
         StartCoroutine(FadeIn(winImage));
+        
+        StartCoroutine("Restart");
     }
 
-  IEnumerator FadeIn(MaskableGraphic element)
+    IEnumerator FadeIn(MaskableGraphic element)
     {
-        for(double i=0;i<=1;i+=0.1)
+        for (double i = 0; i <= 1; i += 0.1)
         {
-             Color tmp = element.color;
-               tmp.a = (float)i;
-                      element.color = tmp;
+            Color tmp = element.color;
+            tmp.a = (float)i;
+            element.color = tmp;
             yield return new WaitForSeconds(0.05f);
         }
     }
-    void ResetOpacity(MaskableGraphic element){
-        Color tmp = element.color;
-        tmp.a = 0;
-         element.color = tmp;
+
+    IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(7f);
+
+        SceneManager.LoadScene("Menu");
     }
 
+    void ResetOpacity(MaskableGraphic element)
+    {
+        Color tmp = element.color;
+        tmp.a = 0;
+        element.color = tmp;
+    }
 }

@@ -6,7 +6,6 @@ using Platform2DUtils.GameplaySystem;
 public class Character2D : MonoBehaviour
 {
     protected SpriteRenderer spr;
-    protected Animator anim;
     protected Rigidbody2D rb2D;
 
     //Raycast ***********************
@@ -21,7 +20,6 @@ public class Character2D : MonoBehaviour
     void Awake()
     {
         spr = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - gm
   - diamond
   - Corazon
+  - vertical
+  - horizontal
   layers:
   - Default
   - TransparentFX
@@ -42,11 +44,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 875529373
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: background
-    uniqueID: 875529373
+  - name: lava
+    uniqueID: 1272090697
+    locked: 0
+  - name: ground
+    uniqueID: 3790857125
     locked: 0
   - name: tree
     uniqueID: 3530528919

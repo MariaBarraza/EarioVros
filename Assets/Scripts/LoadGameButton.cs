@@ -9,20 +9,20 @@ public class LoadGameButton : MonoBehaviour
 {
     Button btnLoadGame;
     public string key;
-    
+
     void Awake()
     {
         btnLoadGame = GetComponent<Button>();
-     
+
     }
-    public void Update(){
-        if (Input.GetKeyDown (key))
+    public void Update()
+    {
+        if (Input.GetKeyDown(key))
         {
-                EventSystem.current.SetSelectedGameObject(this.gameObject);
-                
-                SceneManager.LoadScene("Level01");
-                btnLoadGame.gameObject.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(this.gameObject);
+
+            SceneManager.LoadScene("Tutorial");
+            btnLoadGame.gameObject.SetActive(false);
         }
-  
-    }   
+    }
 }
