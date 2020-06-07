@@ -749,38 +749,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f313b5ea24a6fe4b870c7a2bade1cfd, type: 3}
---- !u!1 &52660759 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7376899636890240845, guid: 51dc5d2978d2d474c8a23d2d3dadc8ec,
-    type: 3}
-  m_PrefabInstance: {fileID: 1004236886}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &52660762
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52660759}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 0.61}
-    newSize: {x: 0.6, y: 0.61}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.61}
-  m_EdgeRadius: 0
 --- !u!1 &52825971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8030671670450237254, guid: eb877289c0cbbfd4294f0cb50e1fcc22,
@@ -2058,38 +2026,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 612187128}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &321319953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7376899636890240845, guid: 51dc5d2978d2d474c8a23d2d3dadc8ec,
-    type: 3}
-  m_PrefabInstance: {fileID: 1375929769}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &321319954
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321319953}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 0.61}
-    newSize: {x: 0.6, y: 0.61}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.61}
-  m_EdgeRadius: 0
 --- !u!4 &357987576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1299030554869631290, guid: bac8ece6f90838c448e2393081c60b46,
@@ -26193,7 +26129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248201888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -305.707, y: -62.02, z: -7}
+  m_LocalPosition: {x: -301.7121, y: -62.02, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -29637,38 +29573,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1728025834}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1830335866 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7376899636890240845, guid: 51dc5d2978d2d474c8a23d2d3dadc8ec,
-    type: 3}
-  m_PrefabInstance: {fileID: 986672092}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1830335867
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830335866}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 0.61}
-    newSize: {x: 0.6, y: 0.61}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.61}
-  m_EdgeRadius: 0
 --- !u!1 &1834707909 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6311553116815744583, guid: 937b861b00432d144a12c0a15557663a,
@@ -31712,7 +31616,7 @@ PrefabInstance:
     - target: {fileID: 4612222655868878169, guid: 55e2bc673edd5f14ca24e6fa9aada7d9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -305.707
+      value: -301.7121
       objectReference: {fileID: 0}
     - target: {fileID: 4612222655868878169, guid: 55e2bc673edd5f14ca24e6fa9aada7d9,
         type: 3}

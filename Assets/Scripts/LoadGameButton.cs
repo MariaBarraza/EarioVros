@@ -15,6 +15,7 @@ public class LoadGameButton : MonoBehaviour
         btnLoadGame = GetComponent<Button>();
 
     }
+
     public void Update()
     {
         if (Input.GetKeyDown(key))
@@ -24,5 +25,10 @@ public class LoadGameButton : MonoBehaviour
             SceneManager.LoadScene("Tutorial");
             btnLoadGame.gameObject.SetActive(false);
         }
+    }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 }
